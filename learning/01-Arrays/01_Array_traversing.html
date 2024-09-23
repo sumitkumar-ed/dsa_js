@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Array Traversing</title>
+    <script>
+      let data = [5, 37, 6, 9, 0, 98, 57, 78, 99];
+      //   for (let i = 0; i < data.length; i++) {
+      //     document.write(`Array ${i} is ${data[i]} <br>`);
+      //   }
+      //   let x = 0;
+      //   document.write(`Array ${x} is ${data[x]} <br>`);
+
+      function getElement() {
+        let element = document.getElementById("element").value;
+        let index = parseInt(element);
+
+        // Validate input: ensure it's a valid number, non-negative, and within array bounds
+        if (isNaN(index) || index < 0 || index >= data.length) {
+          alert("Please enter a valid index (0 to " + (data.length - 1) + ").");
+        } else {
+          alert(`Array element at index ${index} is ${data[index]}`);
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <input type="text" id="element" />
+    <button onclick="getElement()">Get Element</button>
+  </body>
+</html>
