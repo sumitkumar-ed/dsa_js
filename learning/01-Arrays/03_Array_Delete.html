@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Delete Element In Array</title>
+    <script>
+      //   let data = [2, 5, 9, 25, 10, 100, 101, 121, 7, 32];
+      //   let position = 3;
+
+      //   console.warn(data);
+      //   for (let i = position; i < data.length - 1; i++) {
+      //     data[i] = data[i + 1];
+      //   }
+
+      //   data.length = data.length - 1;
+      //   console.warn(data);
+
+      let data = [2, 5, 9, 25, 10, 100, 101, 121, 7, 32];
+
+      window.onload = function () {
+        // Display the existing array
+        document.getElementById(
+          "existing"
+        ).innerHTML = `Existing Array: [ ${data} ] <br> Length : ${data.length}`;
+      };
+
+      function reload(){
+        let positionInput = document.getElementById("position");
+
+        // Check if the input is empty
+        if (positionInput.value.trim() === "") {
+          location.reload(); // Reload the page if the input is empty
+          return;
+        }
+      }
+
+      function removeElement() {
+        let position = parseInt(document.getElementById("position").value);
+
+        if (isNaN(position) || position < 0 || position >= data.length) {
+          alert(
+            "Please enter valid numeric values for position."
+          );
+          return;
+        }
+
+        for (let i = position; i < data.length - 1; i++) {
+          data[i] = data[i + 1];
+        }
+
+        data.length = data.length - 1;
+        document.getElementById(
+          "output"
+        ).innerHTML = `Updated Array : [ ${data} ] <br> Length : ${data.length}`;
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Delete Element In Array</h1>
+    <div id="existing"></div>
+
+    <input type="text" id="position" placeholder="Enter Position" oninput="reload()"/>
+    <button onclick="removeElement()">Delete</button>
+
+    <div id="output"></div>
+  </body>
+</html>
