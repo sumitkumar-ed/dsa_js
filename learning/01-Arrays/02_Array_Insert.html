@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Insert Element In Array</title>
+    <script>
+      // let data = [50, 30, 60, 99, 10];
+      // let newElement = 100;
+      // let position = 4;
+
+      // console.log(data);
+
+      // for (let i = data.length - 1; i >= 0; i--) {
+      //   if (i >= position) {
+      //     data[i + 1] = data[i];
+
+      //     if (i == position) {
+      //       data[i] = newElement;
+      //     }
+      //   }
+      // }
+
+      // console.log(data);
+
+      let data = [50, 30, 60, 99, 10];
+
+      window.onload = function () {
+        // Display the existing array
+        document.getElementById(
+          "existing"
+        ).innerHTML = `Existing Array: ${data}`;
+      };
+
+      function insertElement() {
+        let newElement = parseInt(document.getElementById("newElement").value);
+        let position = parseInt(document.getElementById("position").value);
+
+        if (
+          isNaN(newElement) ||
+          isNaN(position) ||
+          position < 0 ||
+          position > data.length
+        ) {
+          alert(
+            "Please enter valid numeric values for position and new element."
+          );
+          return;
+        }
+
+        // Insert the new element at the given position
+        for (let i = data.length - 1; i >= 0; i--) {
+          if (i >= position) {
+            data[i + 1] = data[i];
+            if (i == position) {
+              data[i] = newElement;
+            }
+          }
+        }
+
+        // Display the updated array
+        document.getElementById(
+          "output"
+        ).innerHTML = `Updated Array: ${data}`;
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Insert Element In Array</h1>
+    <div id="existing"></div>
+
+    <input type="text" id="position" placeholder="Enter Position" />
+    <input type="text" id="newElement" placeholder="Enter New Element" />
+    <button onclick="insertElement()">Insert</button>
+
+    <div id="output"></div>
+    <!-- This will display the updated array -->
+  </body>
+</html>
