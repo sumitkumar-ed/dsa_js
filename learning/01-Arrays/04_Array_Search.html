@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Search Element In Array</title>
+
+    <script>
+      //   function searchElement() {
+      //     let data = [1, 2, 5, 7, 9, 105, 10, 101, 105];
+      //     let element = 105;
+
+      //     for (let i = 0; i < data.length; i++) {
+      //       if (element === data[i]) {
+      //         console.warn(`${element} is in index ${i} of array : [ ${data} ]`);
+      //         // break;
+      //       }
+      //     }
+
+      //     // console.warn(data.indexOf(element));
+      //     data.splice(2,1);
+      //     console.warn(data);
+      //   }
+
+      let data = [1, 2, 5, 7, 9, 105, 10, 101, 105];
+
+      window.onload = function () {
+        // Display the existing array
+        document.getElementById(
+          "existing"
+        ).innerHTML = `Existing Array: [ ${data} ] <br> Length : ${data.length}`;
+      };
+
+      function searchElement() {
+        let element = parseInt(document.getElementById("searchEl").value); // Get value inside the function
+        let result = undefined;
+
+        if (isNaN(element)) {
+          alert("Please enter valid numeric values.");
+          return;
+        }
+
+        for (let i = 0; i < data.length; i++) {
+          if (element === data[i]) {
+            result = i;
+            break;
+          }
+        }
+
+        // Display result
+        if (result != undefined) {
+          document.getElementById(
+            "output"
+          ).innerHTML = `The ${element} is present at index ${result} of the array.`;
+        } else {
+          document.getElementById(
+            "output"
+          ).innerHTML = `The given element ${element} is not found in the array.`;
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div id="existing"></div>
+
+    <input type="text" placeholder="Enter Value" id="searchEl" />
+    <button onclick="searchElement()">Search</button>
+
+    <div id="output"></div>
+  </body>
+</html>
